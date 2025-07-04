@@ -17,6 +17,7 @@ public class Usuarios {
         ps.setString(2, usuario);
         ps.setString(3, contraseña);  
         ps.setString(4, sexo);
+        ps.setString(5, xd);
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Registro exitoso.");
         ps.close();

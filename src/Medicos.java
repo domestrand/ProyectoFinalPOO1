@@ -391,13 +391,13 @@ public class Medicos extends javax.swing.JFrame {
         }
 
         Medico medico = new Medico();
-        medico.actualizarMedico(id, nombre, apellido, especialidad, dni, sexo, fechaNacimiento);
+        medico.actualizarMedico(id, nombre, apellido, especialidad, dni, fechaNacimiento, sexo);
         medico.mostrarMedicos(tablaMedicos);
     }//GEN-LAST:event_btnModificarMedicoActionPerformed
 
     private void tablaMedicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMedicosMouseClicked
         Medico medico = new Medico();
-        medico.seleccionarMedico(tablaMedicos, txtId, txtNomMedico, txtApeMedico, txtEspecialidad, txtDniMedico, rbtnMMedico, rbtnFMedico, clFNMedico);
+        medico.seleccionarMedico(tablaMedicos, txtId, txtNomMedico, txtApeMedico, txtEspecialidad, txtDniMedico, clFNMedico, rbtnMMedico, rbtnFMedico);
     }//GEN-LAST:event_tablaMedicosMouseClicked
 
     public static void main(String args[]) {

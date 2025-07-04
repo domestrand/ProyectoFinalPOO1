@@ -93,42 +93,62 @@ public class Medico {
 
             if (fila >= 0) 
             {
-                String id = tabla.getValueAt(fila, 0).toString(); 
-                int confirmar = JOptionPane.showConfirmDialog(null, "¿Deseas eliminar al medico con ID: " + id + "?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
-            
+                String idTexto = tabla.getValueAt(fila, 0).toString(); 
+                int idMedico = Integer.parseInt(idTexto);
+                Connection con = Conexion.conectar();
+                String sqlVerificar = "SELECT COUNT(*) FROM citas WHERE idmedicos = ?";
+                PreparedStatement psVerificar = con.prepareStatement(sqlVerificar);
+                psVerificar.setInt(1, idMedico);
+                ResultSet rs = psVerificar.executeQuery();
+
+                if (rs.next() && rs.getInt(1) > 0) 
+                {
+                    JOptionPane.showMessageDialog(null, "No puedes eliminar este médico porque tiene citas registradas.");
+                    rs.close();
+                    psVerificar.close();
+                    con.close();
+                    return;
+                }
+
+                rs.close();
+                psVerificar.close();
+
+                int confirmar = JOptionPane.showConfirmDialog(null, "¿Deseas eliminar al medico con ID: " + idMedico + "?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+
                 if (confirmar == JOptionPane.YES_OPTION) 
                 {
-                    Connection con = Conexion.conectar();
-                    String sql = "DELETE FROM medicos WHERE idmedicos = ?";
-                    PreparedStatement ps = con.prepareStatement(sql);
-                    ps.setInt(1, Integer.parseInt(id));
-                    int rowsAffected = ps.executeUpdate();
+                    String sqlEliminar = "DELETE FROM medicos WHERE idmedicos = ?";
+                    PreparedStatement psEliminar = con.prepareStatement(sqlEliminar);
+                    psEliminar.setInt(1, idMedico);
+
+                    int rowsAffected = psEliminar.executeUpdate();
 
                     if (rowsAffected > 0) 
                     {
-                        JOptionPane.showMessageDialog(null, "Medico eliminado correctamente.");
+                        JOptionPane.showMessageDialog(null, "Médico eliminado correctamente.");
                     } 
                     else 
                     {
-                        JOptionPane.showMessageDialog(null, "No se encontró el medico.");
+                        JOptionPane.showMessageDialog(null, "No se encontró el médico.");
                     }
-                
-                    ps.close();
-                    con.close();
+
+                    psEliminar.close();
                 }
+
+                con.close();
             } 
             else 
             {
-                JOptionPane.showMessageDialog(null, "Selecciona un medico en la tabla.");
+                JOptionPane.showMessageDialog(null, "Selecciona un médico en la tabla.");
             }
         }
         catch (Exception e)
         {
-            JOptionPane.showMessageDialog(null, "Error al eliminar medico: " + e.toString());
+            JOptionPane.showMessageDialog(null, "Error al eliminar médico: " + e.toString());
         }
     }
     
-    public void seleccionarMedico(JTable tabla, JTextField txtId, JTextField txtNomMedico, JTextField txtApeMedico, JTextField txtEspecialidad, JTextField txtDniMedico, JRadioButton rbtnMMedico, JRadioButton rbtnFMedico, JCalendar clFNMedico) 
+    public void seleccionarMedico(JTable tabla, JTextField txtId, JTextField txtNomMedico, JTextField txtApeMedico, JTextField txtEspecialidad, JTextField txtDniMedico, JCalendar clFNMedico, JRadioButton rbtnMMedico, JRadioButton rbtnFMedico) 
     {
         try 
         {
@@ -171,7 +191,7 @@ public class Medico {
         }
     }
     
-    public void actualizarMedico(String id, String nombre, String apellido, String especialidad, String dni, String sexo, String fechaNacimiento) 
+    public void actualizarMedico(String id, String nombre, String apellido, String especialidad, String dni, String fechaNacimiento, String sexo) 
     {
         String sql = "UPDATE medicos SET nomMedico=?, apeMedico=?, especialidad=?, dniMedico=?, fechaNacMedico=?, sexoMedico=? WHERE idmedicos=?";
 
@@ -184,8 +204,8 @@ public class Medico {
             ps.setString(2, apellido);
             ps.setString(3, especialidad);
             ps.setString(4, dni);
-            ps.setString(5, sexo);
-            ps.setString(6, fechaNacimiento);
+            ps.setString(5, fechaNacimiento);
+            ps.setString(6, sexo);
             ps.setInt(7, Integer.parseInt(id));
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Medico actualizado correctamente.");

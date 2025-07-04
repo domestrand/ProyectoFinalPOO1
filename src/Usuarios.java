@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Usuarios {
-    public void registrarUsuarios(String nombreApellido, String usuario, String contraseña, String sexo)
+    public void registrarUsuarios(String nombreApellido, String usuario, String contraseña, String sexo, String xd)
     {
         try 
         {
@@ -17,6 +17,7 @@ public class Usuarios {
         ps.setString(2, usuario);
         ps.setString(3, contraseña);  
         ps.setString(4, sexo);
+        ps.setString(5, xd);
         ps.executeUpdate();
         JOptionPane.showMessageDialog(null, "Registro exitoso.");
         ps.close();

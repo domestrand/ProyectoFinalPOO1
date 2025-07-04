@@ -5,7 +5,7 @@ import java.sql.SQLException;
 public class Conexion {
     static String url = "jdbc:mysql://localhost:3306/bdhospital";
     static String user = "root";
-    static String pwd = "MyNewPass1";
+    static String pwd = "Upn20251#";
     
     public static Connection conectar()
     {

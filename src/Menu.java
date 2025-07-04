@@ -14,7 +14,6 @@ public class Menu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnCitas = new javax.swing.JButton();
         btnMedicos = new javax.swing.JButton();
-        btnAreasMedicas = new javax.swing.JButton();
         btnPacientes = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
@@ -39,16 +38,6 @@ public class Menu extends javax.swing.JFrame {
         btnMedicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMedicosActionPerformed(evt);
-            }
-        });
-
-        btnAreasMedicas.setBackground(new java.awt.Color(0, 204, 255));
-        btnAreasMedicas.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnAreasMedicas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/areas medicas.png"))); // NOI18N
-        btnAreasMedicas.setText("AREAS MEDICAS");
-        btnAreasMedicas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAreasMedicasActionPerformed(evt);
             }
         });
 
@@ -79,9 +68,8 @@ public class Menu extends javax.swing.JFrame {
                         .addContainerGap(31, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnCitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnMedicos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAreasMedicas, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                            .addComponent(btnPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnMedicos, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                            .addComponent(btnPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -92,15 +80,13 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCitas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(btnPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAreasMedicas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
+                .addGap(18, 18, 18)
+                .addComponent(btnCitas, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -113,7 +99,7 @@ public class Menu extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 409, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,12 +133,6 @@ public class Menu extends javax.swing.JFrame {
         verMedicos.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnMedicosActionPerformed
-
-    private void btnAreasMedicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAreasMedicasActionPerformed
-        AreasMedicas verAM = new AreasMedicas();
-        verAM.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnAreasMedicasActionPerformed
 
     
     public static void main(String args[]) {
@@ -188,7 +168,6 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAreasMedicas;
     private javax.swing.JButton btnCitas;
     private javax.swing.JButton btnMedicos;
     private javax.swing.JButton btnPacientes;

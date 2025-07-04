@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
@@ -49,7 +50,7 @@ public class Medico {
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
-        modelo.addColumn("Especialidad");
+        modelo.addColumn("Área Medica");
         modelo.addColumn("DNI");
         modelo.addColumn("Fecha Nacimiento");
         modelo.addColumn("Sexo");
@@ -148,7 +149,7 @@ public class Medico {
         }
     }
     
-    public void seleccionarMedico(JTable tabla, JTextField txtId, JTextField txtNomMedico, JTextField txtApeMedico, JTextField txtEspecialidad, JTextField txtDniMedico, JCalendar clFNMedico, JRadioButton rbtnMMedico, JRadioButton rbtnFMedico) 
+    public void seleccionarMedico(JTable tabla, JTextField txtId, JTextField txtNomMedico, JTextField txtApeMedico, JComboBox cbxAreaMedica, JTextField txtDniMedico, JCalendar clFNMedico, JRadioButton rbtnMMedico, JRadioButton rbtnFMedico) 
     {
         try 
         {
@@ -159,7 +160,7 @@ public class Medico {
                 txtId.setText(tabla.getValueAt(fila, 0).toString());
                 txtNomMedico.setText(tabla.getValueAt(fila, 1).toString());
                 txtApeMedico.setText(tabla.getValueAt(fila, 2).toString());              
-                txtEspecialidad.setText(tabla.getValueAt(fila, 3).toString());
+                cbxAreaMedica.setSelectedItem(tabla.getValueAt(fila, 3).toString());
                 txtDniMedico.setText(tabla.getValueAt(fila, 4).toString());
 
                 String sexo = tabla.getValueAt(fila, 5).toString();
@@ -216,6 +217,28 @@ public class Medico {
         catch (Exception e) 
         {
             JOptionPane.showMessageDialog(null, "Error al actualizar: " + e.getMessage());
+        }
+    }
+    public void cargarAreasEnComboM(JComboBox  combo) 
+    {
+        combo.removeAllItems();
+        combo.addItem("Todas");
+        String sql = "SELECT DISTINCT nomArea FROM areasmedicas";
+
+        try {
+            Connection con = Conexion.conectar();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                combo.addItem(rs.getString("nomArea"));
+            }
+
+            rs.close();
+            ps.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar áreas médicas en el combo: " + e.getMessage());
         }
     }
 }

@@ -9,6 +9,8 @@ public class Medicos extends javax.swing.JFrame {
         txtId.setVisible(false);
         Medico medico = new Medico();
         medico.mostrarMedicos(tablaMedicos);
+        medico.cargarAreasEnComboM(cbxAreaMedica);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -26,7 +28,6 @@ public class Medicos extends javax.swing.JFrame {
         txtNomMedico = new javax.swing.JTextField();
         txtApeMedico = new javax.swing.JTextField();
         txtDniMedico = new javax.swing.JTextField();
-        txtEspecialidad = new javax.swing.JTextField();
         rbtnMMedico = new javax.swing.JRadioButton();
         rbtnFMedico = new javax.swing.JRadioButton();
         clFNMedico = new com.toedter.calendar.JCalendar();
@@ -42,8 +43,10 @@ public class Medicos extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        cbxAreaMedica = new javax.swing.JComboBox<>();
         btnAtrasCitas = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
+        btnRAM = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -78,9 +81,6 @@ public class Medicos extends javax.swing.JFrame {
 
         txtDniMedico.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtDniMedico.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
-
-        txtEspecialidad.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtEspecialidad.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(0, 0, 0)));
 
         rbtnMMedico.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         rbtnMMedico.setText("Masculino");
@@ -150,7 +150,7 @@ public class Medicos extends javax.swing.JFrame {
 
         jLabel10.setBackground(new java.awt.Color(255, 0, 0));
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel10.setText("Especialidad");
+        jLabel10.setText("Area Medica");
 
         jLabel11.setBackground(new java.awt.Color(255, 0, 0));
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -163,6 +163,13 @@ public class Medicos extends javax.swing.JFrame {
         jLabel13.setBackground(new java.awt.Color(255, 0, 0));
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel13.setText("Fecha de Nacimiento");
+
+        cbxAreaMedica.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxAreaMedica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxAreaMedicaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -183,24 +190,24 @@ public class Medicos extends javax.swing.JFrame {
                                 .addComponent(rbtnFMedico))
                             .addComponent(jLabel13)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel10))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jLabel12))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtEspecialidad, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                            .addComponent(txtNomMedico, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel11)
-                                .addComponent(txtDniMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtApeMedico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNomMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(cbxAreaMedica, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel11)
+                                        .addComponent(txtDniMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtApeMedico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9)))
+                            .addComponent(jLabel10))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -238,11 +245,11 @@ public class Medicos extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtDniMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(cbxAreaMedica, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -267,6 +274,14 @@ public class Medicos extends javax.swing.JFrame {
 
         txtId.setText("jTextField1");
 
+        btnRAM.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnRAM.setText("Registrar Areas Medicas");
+        btnRAM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRAMActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -282,7 +297,9 @@ public class Medicos extends javax.swing.JFrame {
                         .addGap(31, 31, 31))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnAtrasCitas, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRAM)
+                        .addGap(15, 15, 15))))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -294,8 +311,13 @@ public class Medicos extends javax.swing.JFrame {
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAtrasCitas, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtrasCitas, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(btnRAM)))
                 .addContainerGap())
         );
 
@@ -324,7 +346,7 @@ public class Medicos extends javax.swing.JFrame {
     private void btnRegistrarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarMedicoActionPerformed
         String nombre = txtNomMedico.getText();
         String apellido = txtApeMedico.getText();
-        String especialidad = txtEspecialidad.getText();
+        String especialidad = cbxAreaMedica.getSelectedItem().toString();
         String dni = txtDniMedico.getText();        
         String sexo = "";
 
@@ -360,7 +382,7 @@ public class Medicos extends javax.swing.JFrame {
         String id = txtId.getText();
         String nombre = txtNomMedico.getText();
         String apellido = txtApeMedico.getText();
-        String especialidad = txtEspecialidad.getText();
+        String especialidad = cbxAreaMedica.getSelectedItem().toString();
         String dni = txtDniMedico.getText();     
         String sexo = "";
 
@@ -396,8 +418,18 @@ public class Medicos extends javax.swing.JFrame {
 
     private void tablaMedicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMedicosMouseClicked
         Medico medico = new Medico();
-        medico.seleccionarMedico(tablaMedicos, txtId, txtNomMedico, txtApeMedico, txtEspecialidad, txtDniMedico, clFNMedico, rbtnMMedico, rbtnFMedico);
+        medico.seleccionarMedico(tablaMedicos, txtId, txtNomMedico, txtApeMedico, cbxAreaMedica, txtDniMedico, clFNMedico, rbtnMMedico, rbtnFMedico);
     }//GEN-LAST:event_tablaMedicosMouseClicked
+
+    private void cbxAreaMedicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAreaMedicaActionPerformed
+       
+    }//GEN-LAST:event_cbxAreaMedicaActionPerformed
+
+    private void btnRAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRAMActionPerformed
+        RegistrarAM verRAM = new RegistrarAM();
+        verRAM.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRAMActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -435,7 +467,9 @@ public class Medicos extends javax.swing.JFrame {
     private javax.swing.JButton btnAtrasCitas;
     private javax.swing.JButton btnEliminarMedico;
     private javax.swing.JButton btnModificarMedico;
+    private javax.swing.JButton btnRAM;
     private javax.swing.JButton btnRegistrarMedico;
+    private javax.swing.JComboBox<String> cbxAreaMedica;
     private com.toedter.calendar.JCalendar clFNMedico;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -458,7 +492,6 @@ public class Medicos extends javax.swing.JFrame {
     private javax.swing.JTable tablaMedicos;
     private javax.swing.JTextField txtApeMedico;
     private javax.swing.JTextField txtDniMedico;
-    private javax.swing.JTextField txtEspecialidad;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNomMedico;
     // End of variables declaration//GEN-END:variables
